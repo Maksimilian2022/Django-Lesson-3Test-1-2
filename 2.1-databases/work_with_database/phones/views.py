@@ -10,15 +10,20 @@ def index(request):
 
 def show_catalog(request):
     template = 'catalog.html'
-    phone_objects = Phone.objects.all()
-    phone_object = [f'{model.name, model.price}' for model in phone_objects]
-    context = {"phone_objects": Phone.objects.all()}
+    phone_sort = Phone.objects.order_by(request.GET['sort'])
+    context = {"phone_objects": phone_sort}
     return render(request, template, context)
 
 
 def show_product(request, slug):
     template = 'product.html'
-    context = {}
+    phone = Phone.objects.get(slug=slug)
+    context = {'phone': phone}
     return render(request, template, context)
+
+
+
+
+
 
 

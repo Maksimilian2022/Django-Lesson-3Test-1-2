@@ -13,7 +13,7 @@ class Command(BaseCommand):
 
         for phone in phones:
             i = 0
-            new_phone = Phone(name=phone['name'], img=phone['image'], price='NONE', release_data='NONE', lte_exist=phone['lte_exists'], slug='NONE')
+            new_phone = Phone(name=phone['name'], img=phone['image'], price=phone['price'], release_data=phone['release_date'], lte_exist=phone['lte_exists'], slug=phone['name'].replace(' ', ''))
             new_phone.save()
             i += 1
 
